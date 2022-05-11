@@ -1,5 +1,5 @@
 @echo off
 git add *
-git commit -m "一键提交" 
+git commit -m "easy commit changes" 
 git push
 @echo on
