@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="auth-bypass" />
+        <module name="bypass-restrictions" />
+        <module name="challenge" />
+        <module name="chrome-dev-tools" />
+        <module name="cia" />
+        <module name="client-side-filtering" />
+        <module name="cross-site-scripting" />
+        <module name="crypto" />
+        <module name="csrf" />
+        <module name="html-tampering" />
+        <module name="http-basics" />
+        <module name="http-proxies" />
+        <module name="idor" />
+        <module name="insecure-deserialization" />
+        <module name="insecure-login" />
+        <module name="jwt" />
+        <module name="missing-function-ac" />
+        <module name="password-reset" />
+        <module name="path-traversal" />
+        <module name="secure-passwords" />
+        <module name="sql-injection" />
+        <module name="ssrf" />
+        <module name="vulnerable-components" />
+        <module name="webgoat-all-in-one-docker" />
+        <module name="webgoat-container" />
+        <module name="webgoat-integration-tests" />
+        <module name="webgoat-introduction" />
+        <module name="webgoat-lesson-template" />
+        <module name="webgoat-server" />
+        <module name="webwolf" />
+        <module name="webwolf-introduction" />
+        <module name="xxe" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="auth-bypass" target="15" />
+      <module name="bypass-restrictions" target="15" />
+      <module name="challenge" target="15" />
+      <module name="chrome-dev-tools" target="15" />
+      <module name="cia" target="15" />
+      <module name="client-side-filtering" target="15" />
+      <module name="cross-site-scripting" target="15" />
+      <module name="crypto" target="15" />
+      <module name="csrf" target="15" />
+      <module name="html-tampering" target="15" />
+      <module name="http-basics" target="15" />
+      <module name="http-proxies" target="15" />
+      <module name="idor" target="15" />
+      <module name="insecure-deserialization" target="15" />
+      <module name="insecure-login" target="15" />
+      <module name="jwt" target="15" />
+      <module name="missing-function-ac" target="15" />
+      <module name="password-reset" target="15" />
+      <module name="path-traversal" target="15" />
+      <module name="secure-passwords" target="15" />
+      <module name="sql-injection" target="15" />
+      <module name="ssrf" target="15" />
+      <module name="vulnerable-components" target="15" />
+      <module name="webgoat-all-in-one-docker" target="15" />
+      <module name="webgoat-container" target="15" />
+      <module name="webgoat-integration-tests" target="15" />
+      <module name="webgoat-introduction" target="15" />
+      <module name="webgoat-lesson-template" target="15" />
+      <module name="webgoat-lessons-parent" target="15" />
+      <module name="webgoat-parent" target="15" />
+      <module name="webgoat-server" target="15" />
+      <module name="webwolf" target="15" />
+      <module name="webwolf-introduction" target="15" />
+      <module name="xxe" target="15" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="auth-bypass" options="-parameters" />
+      <module name="bypass-restrictions" options="-parameters" />
+      <module name="challenge" options="-parameters" />
+      <module name="chrome-dev-tools" options="-parameters" />
+      <module name="cia" options="-parameters" />
+      <module name="client-side-filtering" options="-parameters" />
+      <module name="cross-site-scripting" options="-parameters" />
+      <module name="crypto" options="-parameters" />
+      <module name="csrf" options="-parameters" />
+      <module name="html-tampering" options="-parameters" />
+      <module name="http-basics" options="-parameters" />
+      <module name="http-proxies" options="-parameters" />
+      <module name="idor" options="-parameters" />
+      <module name="insecure-deserialization" options="-parameters" />
+      <module name="insecure-login" options="-parameters" />
+      <module name="jwt" options="-parameters" />
+      <module name="missing-function-ac" options="-parameters" />
+      <module name="password-reset" options="-parameters" />
+      <module name="path-traversal" options="-parameters" />
+      <module name="secure-passwords" options="-parameters" />
+      <module name="sql-injection" options="-parameters" />
+      <module name="ssrf" options="-parameters" />
+      <module name="vulnerable-components" options="-parameters" />
+      <module name="webgoat-all-in-one-docker" options="-parameters" />
+      <module name="webgoat-container" options="-parameters" />
+      <module name="webgoat-integration-tests" options="-parameters" />
+      <module name="webgoat-introduction" options="-parameters" />
+      <module name="webgoat-lesson-template" options="-parameters" />
+      <module name="webgoat-server" options="-parameters" />
+      <module name="webwolf" options="-parameters" />
+      <module name="webwolf-introduction" options="-parameters" />
+      <module name="xxe" options="-parameters" />
+    </option>
+  </component>
+</project>

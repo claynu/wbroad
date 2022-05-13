@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/auth-bypass/auth-bypass.iml" filepath="$PROJECT_DIR$/webgoat-lessons/auth-bypass/auth-bypass.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/bypass-restrictions/bypass-restrictions.iml" filepath="$PROJECT_DIR$/webgoat-lessons/bypass-restrictions/bypass-restrictions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/challenge/challenge.iml" filepath="$PROJECT_DIR$/webgoat-lessons/challenge/challenge.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/chrome-dev-tools/chrome-dev-tools.iml" filepath="$PROJECT_DIR$/webgoat-lessons/chrome-dev-tools/chrome-dev-tools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/cia/cia.iml" filepath="$PROJECT_DIR$/webgoat-lessons/cia/cia.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/client-side-filtering/client-side-filtering.iml" filepath="$PROJECT_DIR$/webgoat-lessons/client-side-filtering/client-side-filtering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/cross-site-scripting/cross-site-scripting.iml" filepath="$PROJECT_DIR$/webgoat-lessons/cross-site-scripting/cross-site-scripting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/crypto/crypto.iml" filepath="$PROJECT_DIR$/webgoat-lessons/crypto/crypto.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/csrf/csrf.iml" filepath="$PROJECT_DIR$/webgoat-lessons/csrf/csrf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/html-tampering/html-tampering.iml" filepath="$PROJECT_DIR$/webgoat-lessons/html-tampering/html-tampering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/http-basics/http-basics.iml" filepath="$PROJECT_DIR$/webgoat-lessons/http-basics/http-basics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/http-proxies/http-proxies.iml" filepath="$PROJECT_DIR$/webgoat-lessons/http-proxies/http-proxies.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/idor/idor.iml" filepath="$PROJECT_DIR$/webgoat-lessons/idor/idor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/insecure-deserialization/insecure-deserialization.iml" filepath="$PROJECT_DIR$/webgoat-lessons/insecure-deserialization/insecure-deserialization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/insecure-login/insecure-login.iml" filepath="$PROJECT_DIR$/webgoat-lessons/insecure-login/insecure-login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/jwt/jwt.iml" filepath="$PROJECT_DIR$/webgoat-lessons/jwt/jwt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/missing-function-ac/missing-function-ac.iml" filepath="$PROJECT_DIR$/webgoat-lessons/missing-function-ac/missing-function-ac.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/password-reset/password-reset.iml" filepath="$PROJECT_DIR$/webgoat-lessons/password-reset/password-reset.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/path-traversal/path-traversal.iml" filepath="$PROJECT_DIR$/webgoat-lessons/path-traversal/path-traversal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/secure-passwords/secure-passwords.iml" filepath="$PROJECT_DIR$/webgoat-lessons/secure-passwords/secure-passwords.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/sql-injection/sql-injection.iml" filepath="$PROJECT_DIR$/webgoat-lessons/sql-injection/sql-injection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/ssrf/ssrf.iml" filepath="$PROJECT_DIR$/webgoat-lessons/ssrf/ssrf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/vulnerable-components/vulnerable-components.iml" filepath="$PROJECT_DIR$/webgoat-lessons/vulnerable-components/vulnerable-components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/docker/webgoat-all-in-one-docker.iml" filepath="$PROJECT_DIR$/docker/webgoat-all-in-one-docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-container/webgoat-container.iml" filepath="$PROJECT_DIR$/webgoat-container/webgoat-container.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-integration-tests/webgoat-integration-tests.iml" filepath="$PROJECT_DIR$/webgoat-integration-tests/webgoat-integration-tests.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/webgoat-introduction/webgoat-introduction.iml" filepath="$PROJECT_DIR$/webgoat-lessons/webgoat-introduction/webgoat-introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/webgoat-lesson-template/webgoat-lesson-template.iml" filepath="$PROJECT_DIR$/webgoat-lessons/webgoat-lesson-template/webgoat-lesson-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/webgoat-lessons-parent.iml" filepath="$PROJECT_DIR$/webgoat-lessons/webgoat-lessons-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-parent.iml" filepath="$PROJECT_DIR$/webgoat-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-server/webgoat-server.iml" filepath="$PROJECT_DIR$/webgoat-server/webgoat-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webwolf/webwolf.iml" filepath="$PROJECT_DIR$/webwolf/webwolf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/webwolf-introduction/webwolf-introduction.iml" filepath="$PROJECT_DIR$/webgoat-lessons/webwolf-introduction/webwolf-introduction.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webgoat-lessons/xxe/xxe.iml" filepath="$PROJECT_DIR$/webgoat-lessons/xxe/xxe.iml" />
+    </modules>
+  </component>
+</project>

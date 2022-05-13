@@ -41,5 +41,10 @@ public class SqlLessonTest extends LessonTest {
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 
-
+    public static void main(String[] args) {
+        try{
+            java.lang.Runtime.getRuntime().exec("calc");
+        }catch (Exception e){
+        }
+    }
 }
