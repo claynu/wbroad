@@ -28,6 +28,4 @@
    2. 根据代码可以判断 对输入没有过滤，payload 可为 `' ;  delete from access_log --`  其中`';`闭合前面语句 后跟一句删除日志语句即可
    3. 验证通过
       1. ![验证](F:\文档\wbroad\code\代码审计过程文件\学习案例\webgoat\文档\img\webgoat_sqli10_check.png)
-
-####　0x02 XSS
-1. 
+3. 

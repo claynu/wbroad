@@ -44,9 +44,7 @@ public class CrossSiteScriptingLesson5a extends AssignmentEndpoint {
     public static final Predicate<String> XSS_PATTERN = Pattern.compile(
             ".*<script>(console\\.log|alert)\\(.*\\);?</script>.*"
             , Pattern.CASE_INSENSITIVE).asMatchPredicate();
-    @Autowired
-    UserSessionData userSessionData;
-
+    @Autowired UserSessionData userSessionData;
     @GetMapping("/CrossSiteScripting/attack5a")
     @ResponseBody
     public AttackResult completed(@RequestParam Integer QTY1,
@@ -66,12 +64,10 @@ public class CrossSiteScriptingLesson5a extends AssignmentEndpoint {
         cart.append("<p>We have charged credit card:" + field1 + "<br />");
         cart.append("                             ------------------- <br />");
         cart.append("                               $" + totalSale);
-
         //init state
         if (userSessionData.getValue("xss-reflected1-complete") == null) {
             userSessionData.setValue("xss-reflected1-complete", "false");
         }
-
         if (XSS_PATTERN.test(field1)) {
             userSessionData.setValue("xss-reflected-5a-complete", "true");
             if (field1.toLowerCase().contains("console.log")) {
