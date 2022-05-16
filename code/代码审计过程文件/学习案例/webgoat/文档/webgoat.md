@@ -1,5 +1,11 @@
 ### webgoat 案例学习
 
+---
+
+[toc]
+
+---
+
 1. 根据目录结构和`pom.xml`确定项目的三方包为maven管理的 检查pom文件 框架整体是采用spring boot 
    1. ![pom.xml](F:\文档\wbroad\code\代码审计过程文件\学习案例\webgoat\文档\img\pom.png)
 > ``` 审计代码发现每个类型的漏洞是独立项目 具体技术在对应模块描述 8.2.0 依赖jdk15运行环境需要大于等于15``` 
@@ -30,4 +36,18 @@
       1. ![验证](F:\文档\wbroad\code\代码审计过程文件\学习案例\webgoat\文档\img\webgoat_sqli10_check.png)
 
 ####　0x02 XSS
-1. 
+1. xss 第七题，题目比较简单2选一 找出存在xss的字段
+
+   1. ![](F:\文档\wbroad\code\代码审计过程文件\学习案例\webgoat\文档\img\xss_lesson7.png)
+
+   2. 查看代码，发现对用户输入是通过正则判断 并且先对`field2`字段判断符合正则返回false，`field1`字段符合正则返回true。
+      ```java
+      public static final Predicate<String> XSS_PATTERN = Pattern.compile(
+              ".*<script>(console\\.log|alert)\\(.*\\);?</script>.*"
+              , Pattern.CASE_INSENSITIVE).asMatchPredicate();`
+      ```
+
+   			3. 如题 可判断lesson7 的card number 有回显可能存在xss payload 为`<script>alert(document.cookie)</script>` ，成功弹出cookie，顺便对这个正则进行绕过`<script>;alert(document.cookie)</script>`
+   			3. ![](F:\文档\wbroad\code\代码审计过程文件\学习案例\webgoat\文档\img\xss_bapass_les7.png)
+
+#### 0x03
