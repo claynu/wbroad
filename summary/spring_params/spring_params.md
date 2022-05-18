@@ -48,7 +48,7 @@ springMVC 流程图
 >
 > springmvc: Spring MVC属于SpringFrameWork的后续产品，已经融合在Spring Web Flow里面。Spring 框架提供了构建 [Web](https://baike.baidu.com/item/Web/150564) 应用程序的全功能 MVC 模块。使用 Spring 可插入的 MVC 架构，从而在使用Spring进行WEB开发时，可以选择使用Spring的Spring MVC框架或集成其他MVC开发框架，如Struts1(现在一般不用)，Struts 2(一般老项目使用)等等。
 
-从词条上看springboot(配置工具)和springmvc(web开发框架)不同的概念,不过在spring boot 开发web项目时会引入 spring-boot-starter-web (这个依赖会引入spring-webmvc) ,从依赖上看springboot开发web项目也是基于springMVC, springboot(web开发)目前多用于开发一些微服务项目或者前后端分离项目,没有使用视图解析模块,不分离项目也可引入对于的包例如struts2(爆了一堆漏洞,目前行内已经弃用)
+从词条上看springboot(配置工具)和springmvc(web开发框架)不同的概念,不过在spring boot 开发web项目时会引入 spring-boot-starter-web (这个依赖会引入spring-webmvc) ,从依赖上看springboot开发web项目也是基于springMVC, springboot(web开发)目前多用于开发一些微服务项目或者前后端分离项目,没有使用视图解析模块,不分离项目也可引入对应的包例如struts2(爆了一堆漏洞,目前行内已经弃用)
 
 ```
     <dependency>
