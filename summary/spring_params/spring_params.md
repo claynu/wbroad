@@ -35,7 +35,7 @@
   > 参考 https://blog.csdn.net/MDX_BLSNT_KBQ/article/details/120568869
 
 #### 3 springMVC应用中controller 和servlet 的区别
-![springMVC流程图](img/springMVC.png)
+![springMVC流程图](img/springmvc.png)
 springMVC 流程图
 	1. Servlet将所有请求都转发到DisPatcherServlet，然后DisPatcherServlet分发请求通过HandlerMapping(处理器映射器)和HandlerAdapter(处理器适配器)找到具体的Controller,controller只是一个javabean
 	2. 个人理解springmvc应用就是一个servlet ,在springmvc应用中请求是先通过tomcat分发到Servlet->DispatcherServlet,然后DispatcherServlet会再次根据url进行分发处理后续流程
