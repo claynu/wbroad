@@ -2,14 +2,15 @@ accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/w
 accept-encoding: gzip, deflate, br
 accept-language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7
 cache-control: no-cache
-cookie: _ga=GA1.2.1789269248.1655388124; _gid=GA1.2.249117850.1655388124; cf_chl_2=25f62c86f0f4d5d; cf_chl_prog=x13; cf_clearance=Ls5P4J8yXiB0aYnY_NbW4bBVxWZIEy5X39uWSypqgfE-1655395641-0-150; __cf_bm=dmICCgRucRp3LhcocVUwyiC.tonYsCkoYQKARWUc6l8-1655395651-0-AVpJ9GFzr5y0HX+byCTjhk5yMfmxQYrt7qJjpSz8I8OS+bQgHhrF7XxoQwaf0shSmMxjNSooNuksOTcVPmgN8LeYsvcRMfnPEYg6ptl0LeJP/KRXBEN9DdWMf0c3mqudPQ==; _dd_s=logs=1&id=794a5eeb-3769-4293-88f1-86640395d13f&created=1655395033876&expire=1655396611289; MVN_SESSION=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InVpZCI6ImU0Mzc5YmUwLWVkN2MtMTFlYy1hNzVhLTgzNWI3OTc3NDJmYSJ9LCJleHAiOjE2ODY5MzE3MDksIm5iZiI6MTY1NTM5NTcwOSwiaWF0IjoxNjU1Mzk1NzA5fQ.nU7MyvnnwnLnyUF5Dbc1tNMk3h7-CGn_eCP0rsdUOB8
+cookie: _ga=GA1.2.1789269248.1655388124; _gid=GA1.2.249117850.1655388124; cf_chl_2=8e519f7ce1707ea; cf_chl_prog=x14; cf_clearance=z7WItwEJsqHnTmwbUfGaQ2huP0JxjieOKmmZzV.R0IY-1655403193-0-150; MVN_SESSION=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InVpZCI6ImU0Mzc5YmUwLWVkN2MtMTFlYy1hNzVhLTgzNWI3OTc3NDJmYSJ9LCJleHAiOjE2ODY5Mzk3OTAsIm5iZiI6MTY1NTQwMzc5MCwiaWF0IjoxNjU1NDAzNzkwfQ.oLNdIcFs6BctlFUNZmkzLGos3a87_cqTg70Kp216Uf0; _gat=1; __cf_bm=iDVzDbiMNAav5XKCWstvp_RtMsioqHC4RWuEvbo6fS8-1655403791-0-AduGWo7q/BcSEe8FazaoacbAM/iEOKKZexrm0EOdyUboDZdSHBMEPvzf6v4vB3ZXqVBDNShALQyezBLHA5Jnytow42q334De1BxIwxKuf+OEaksmP4ctDw6JzOIrVV081A==; _dd_s=logs=1&id=1a5d0c14-a1c2-4f73-b4fb-4050b87ff11a&created=1655401528602&expire=1655404699754
 pragma: no-cache
+referer: https://mvnrepository.com/artifact/com.typesafe.play/play-test
 sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="102", "Google Chrome";v="102"
 sec-ch-ua-mobile: ?0
 sec-ch-ua-platform: "Windows"
 sec-fetch-dest: document
 sec-fetch-mode: navigate
-sec-fetch-site: none
+sec-fetch-site: same-origin
 sec-fetch-user: ?1
 upgrade-insecure-requests: 1
 user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36

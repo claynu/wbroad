@@ -2,25 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b52e6f97-f093-4b5d-8ba7-acf52d276418" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/collect/parse_pom_xml.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/nexus-maven-repository-index" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pom_webgoat.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/text" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/maven_resp_collection.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/maven_resp_collection.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/collect/headers.txt" beforeDir="false" afterPath="$PROJECT_DIR$/collect/headers.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/collect/maven_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/collect/maven_spider.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collect/maven_spider_bak.py" beforeDir="false" afterPath="$PROJECT_DIR$/collect/maven_spider_bak.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/collect/parse_html.py" beforeDir="false" afterPath="$PROJECT_DIR$/collect/parse_html.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="maven_resp_collection" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -58,7 +50,7 @@
       <recent name="C:\Users\takumi\PycharmProjects\maven_resp_collection\collect\maven_resource" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.parse_pom_xml">
+  <component name="RunManager" selected="Python.maven_spider">
     <configuration name="headers_format" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="maven_resp_collection" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,10 +137,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.parse_pom_xml" />
         <item itemvalue="Python.maven_spider" />
-        <item itemvalue="Python.parse_html" />
         <item itemvalue="Python.headers_format" />
+        <item itemvalue="Python.parse_pom_xml" />
+        <item itemvalue="Python.parse_html" />
       </list>
     </recent_temporary>
   </component>
@@ -173,38 +165,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="635" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1655398473853" />
-    <state width="1899" height="122" key="GridCell.Tab.0.bottom" timestamp="1655399927663">
+    <state width="1899" height="386" key="GridCell.Tab.0.bottom" timestamp="1655405062580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="122" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1655399927663" />
-    <state width="1899" height="122" key="GridCell.Tab.0.center" timestamp="1655399927663">
+    <state width="1899" height="386" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1655405062580" />
+    <state width="1899" height="386" key="GridCell.Tab.0.center" timestamp="1655405062579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="122" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1655399927663" />
-    <state width="1899" height="122" key="GridCell.Tab.0.left" timestamp="1655399927663">
+    <state width="1899" height="386" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1655405062579" />
+    <state width="1899" height="386" key="GridCell.Tab.0.left" timestamp="1655405062579">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="122" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1655399927663" />
-    <state width="1899" height="122" key="GridCell.Tab.0.right" timestamp="1655399927663">
+    <state width="1899" height="386" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1655405062579" />
+    <state width="1899" height="386" key="GridCell.Tab.0.right" timestamp="1655405062580">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="122" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1655399927663" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1655397002026">
+    <state width="1899" height="386" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1655405062579" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1655404111315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1655397002026" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1655397002026">
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1655404111315" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1655404111315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1655397002026" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1655397002026">
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1655404111315" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1655404111315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1655397002026" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1655397002026">
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1655404111315" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1655404111315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1655397002026" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1655404111315" />
     <state x="422" y="184" key="SettingsEditor" timestamp="1655387995973">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -256,6 +248,21 @@
           <url>file://$PROJECT_DIR$/collect/parse_pom_xml.py</url>
           <line>44</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/collect/maven_spider.py</url>
+          <line>119</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/collect/maven_spider.py</url>
+          <line>106</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/collect/maven_spider.py</url>
+          <line>111</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
