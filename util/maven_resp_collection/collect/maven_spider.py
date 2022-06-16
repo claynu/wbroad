@@ -91,6 +91,7 @@ def insert_group_url(url,group_id):
     execone_sql(sql)
 
 def insert_art_urls(urls):
+    print(f"insert {urls}")
     sql = "insert ignore into artifact(url) value(%s)"
     execmany_sql(sql, urls)
 
@@ -179,10 +180,10 @@ def thread_s():
     while 1:
         collect_url()
 if __name__ == '__main__':
-    # collect_url()
+    collect_url()
     _thread.start_new_thread(thread_s,())
     while 1:
-        query()
+        collect_url()
     # _thread.start_new_thread()
     # collect_categories()
 
