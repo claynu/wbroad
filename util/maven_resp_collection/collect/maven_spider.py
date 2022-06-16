@@ -137,8 +137,8 @@ def query(num=10):
 
 
 # 根据groupId获取对于的组件url
-def collect_url():
-    urls = get_url(num=10,table="group")
+def collect_url(num=10):
+    urls = get_url(num=num,table="group")
     ids = []
     for url in urls:
         id = url[0]
@@ -175,12 +175,14 @@ def get_group_by_index():
             cursor.execute(sql)
             con.commit()
 
-
+def thread_s():
+    while 1:
+        collect_url()
 if __name__ == '__main__':
     # collect_url()
+    _thread.start_new_thread(thread_s,())
     while 1:
         query()
-        collect_url()
     # _thread.start_new_thread()
     # collect_categories()
 
