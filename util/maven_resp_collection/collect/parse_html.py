@@ -1,6 +1,8 @@
 # parse response for vuln information
 import re
 
+
+# 获取存在漏洞的组件版本信息
 def parse_vul_html(html):
     vuln_html = re.findall('<a class="vuln" href="(.*?)">(.*?)</a>', html)
     if not vuln_html:
@@ -13,6 +15,7 @@ def parse_vul_html(html):
     return [i for i in vuln_html]
 
 
+# 获取groupId
 def parse_open_source_html(html):
     sources = re.findall('(/open-source/.*?)"', html)
     if not sources:
@@ -22,9 +25,10 @@ def parse_open_source_html(html):
         elif html.find('<title>Please Wait... | Cloudflare</title>')!= -1:
             print("waf is working")
         return
-    return [f"https://mvnrepository.com/{i}" for i in sources]
+    return [f"https://mvnrepository.com{i}" for i in sources]
 
 
+# 获取 artifactId
 def parse_url_html(html):
     sources = re.findall('href="(/artifact/.*?)"', html)
     if not sources:
@@ -34,7 +38,20 @@ def parse_url_html(html):
         elif html.find('<title>Please Wait... | Cloudflare</title>')!= -1:
             print("waf is working")
         return
-    return [f"https://mvnrepository.com/{i}" for i in sources]
+    return [f"https://mvnrepository.com{i}" for i in sources]
+
+
+# 解析具体版本的漏洞详情
+def parse_info_html(html):
+    infos = re.findall('<a class="vuln" href="(.*?)">(.*?)</a>', html)
+    if not infos:
+        # 判断是请求被拦截还是不存在vuln
+        if html.find('class="grid versions"')!=-1:
+            print("response vuln is Null")
+        elif html.find('<title>Please Wait... | Cloudflare</title>')!= -1:
+            print("waf is working")
+        return
+    return infos
 
 if __name__ == '__main__':
     html = """
@@ -218,4 +235,17 @@ Powered by:
 Copyright &copy; 2006-2022 MvnRepository. All rights reserved.<br/><span style="text-align: center">Web site developed by <a href="https://twitter.com/frodriguez">@frodriguez</a></span><br/><a href="mailto:info@mvnrepository.com">Contact Us</a></div><script src="/assets/javascripts/729ad6b0945dc6b8bdb211b062b33385-perf.js" type="text/javascript" async></script><script type="text/javascript">(function(){window['__CF$cv$params']={r:'71c1a8896c430c93',m:'zh_EptEDzv_0IWHrRr0i3Pmj.6f1_o0poitTo7ONWk4-1655362720-0-AUk5QtaSgukiKiM0lnJ8t56DcjI4N7kjs+DyJypItwRq8IjICW8eHo3Zk8SU2KoLK9s5ZqZAckntzfPdxqZ/L/wyMp1Tua48WfAJxIsw2oH7uxNkKGjCJdbXngtvWtyjlLq9d4i9ffXL7SO0Odt4vU4=',s:[0xda76e41e6c,0x52b99e8588],u:'/cdn-cgi/challenge-platform/h/g'}})();</script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/v652eace1692a40cfa3763df669d7439c1639079717194" integrity="sha512-Gi7xpJR8tSkrpF7aordPZQlW2DLtzUlZcumS8dMQjwDHEnw9I7ZLyiOj/6tZStRBGtGgN6ceN6cMH8z7etPGlw==" data-cf-beacon='{"rayId":"71c1a8896c430c93","token":"4949865c1d344f918bc868536209aa2e","version":"2022.6.0","si":100}' crossorigin="anonymous"></script>
 </body></html>
     """
-    print(parse_open_source_html(html))
+    # print(parse_open_source_html(html))
+
+    str = '''b'\x0ecom.jamonapi;resolution:=optional,net.sf.cglib.core;resolution:=optional,net.sf.cglib.proxy;resolution:=optional,net.sf.cglib.transform.impl;resolution:=optional,org.aopalliance.aop;resolution:=optional,org.aopalliance.intercept;resolution:=optional,org.apache.commons.logging,org.apache.commons.pool;resolution:=optional,org.apache.commons.pool.impl;resolution:=optional,org.aspectj.bridge;resolution:=optional,org.aspectj.lang;resolution:=optional,org.aspectj.lang.annotation;resolution:=optional,org.aspectj.lang.reflect;resolution:=optional,org.aspectj.runtime.internal;resolution:=optional,org.aspectj.util;resolution:=optional,org.aspectj.weaver;resolution:=optional,org.aspectj.weaver.ast;resolution:=optional,org.aspectj.weaver.internal.tools;resolution:=optional,org.aspectj.weaver.patterns;resolution:=optional,org.aspectj.weaver.reflect;resolution:=optional,org.aspectj.weaver.tools;resolution:=optional,org.springframework.aop;resolution:=optional;version=2.5.0,org.springframework.aop.aspectj;resolution:=optional;version=2.5.0,org.springframework.aop.aspectj.annotation;resolution:=optional;version=2.5.0,org.springframework.aop.aspectj.autoproxy;resolution:=optional;version=2.5.0,org.springframework.aop.config;resolution:=optional;version=2.5.0,org.springframework.aop.framework;resolution:=optional;version=2.5.0,org.springframework.aop.framework.adapter;resolution:=optional;version=2.5.0,org.springframework.aop.framework.autoproxy;resolution:=optional;version=2.5.0,org.springframework.aop.framework.autoproxy.target;resolution:=optional;version=2.5.0,org.springframework.aop.interceptor;resolution:=optional;version=2.5.0,org.springframework.aop.scope;resolution:=optional;version=2.5.0,org.springframework.aop.support;resolution:=optional;version=2.5.0,org.springframework.aop.support.annotation;resolution:=optional;version=2.5.0,org.springframework.aop.target;resolution:=optional;version=2.5.0,org.springframework.aop.target.dynamic;resolution:=optional;version=2.5.0,org.springframework.beans;resolution:=optional,org.springframework.beans.factory;resolution:=optional,org.springframework.beans.factory.config;resolution:=optional,org.springframework.beans.factory.parsing;resolution:=optional,org.springframework.beans.factory.support;resolution:=optional,org.springframework.beans.factory.xml;resolution:=optional,org.springframework.core;resolution:=optional,org.springframework.core.annotation;resolution:=optional,org.springframework.util;resolution:=optional,org.springframework.util.xml;resolution:=optional,org.w3c.dom;resolution:=optional\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00.org.springframework|spring-aop|2.5|sources|jar\x04\x00\x01m\x00\x00\x00\r1318435753264\x04\x00\x01i\x00\x00\x00"jar|1195555957000|328428|2|2|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(8c7a221bd433e87efc0cb21d78cae1cce46e0e08\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.8|NA\x04\x00\x01m\x00\x00\x00\r1318435753422\x04\x00\x01i\x00\x00\x00"jar|1199933876000|308060|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(024239e9884e5ca3ba6015edeceb1849c827a31f\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.7|NA\x04\x00\x01m\x00\x00\x00\r1318435753538\x04\x00\x01i\x00\x00\x00"jar|1191290117000|307931|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(8eda551a4501b0bb248561e579756044ea0619c1\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.6|NA\x04\x00\x01m\x00\x00\x00\r1318435753738\x04\x00\x01i\x00\x00\x00"jar|1182275774000|303542|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(8172c9ded4f6b499802a47a9ee270fd3de7ba61b\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.5|NA\x04\x00\x01m\x00\x00\x00\r1318435753864\x04\x00\x01i\x00\x00\x00"jar|1178588654000|303344|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(15942e073bf3e884d28b2a97c3a66d02171d5df9\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.4|NA\x04\x00\x01m\x00\x00\x00\r1318435754092\x04\x00\x01i\x00\x00\x00"jar|1176240913000|303009|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(a81d0b23b909711227dfd8807bad5cb43c952997\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.3|NA\x04\x00\x01m\x00\x00\x00\r1318435754200\x04\x00\x01i\x00\x00\x00"jar|1173479794000|298411|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(cdaa835cc387102f3ad0a5ef83d97328bbb7eaa2\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.2|NA\x04\x00\x01m\x00\x00\x00\r1318435754441\x04\x00\x01i\x00\x00\x00"jar|1168367574000|290064|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(3da0bc808bf0b47eb7f3bd4c0b7bf54532dd7de8\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|2.0.1|NA\x04\x00\x01m\x00\x00\x00\r1318435754644\x04\x00\x01i\x00\x00\x00"jar|1164493962000|283696|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(feacd0453ab65855787bb4f69204c89f899b42fa\x00\x00\x00\x04\x05\x00\x01u\x00\x00\x00)org.springframework|spring-aop|2.0-rc2|NA\x04\x00\x01m\x00\x00\x00\r1318435754719\x04\x00\x01i\x00\x00\x00"jar|1152190690000|272563|1|0|0|jar\x05\x00\x011\x00\x00\x00(eeadb0f21905523b624aa7188b6e504f4e446515\x00\x00\x00\x04\x05\x00\x01u\x00\x00\x002org.springframework|spring-aop|2.0-rc2|sources|jar\x04\x00\x01m\x00\x00\x00\r1318435754746\x04\x00\x01i\x00\x00\x00"jar|1152440426000|287928|2|2|0|jar\x05\x00\x011\x00\x00\x00(1eb7e0bd54894be35e4a3de6e9526c4a247e2c1c\x00\x00\x00\x04\x05\x00\x01u\x00\x00\x00)org.springframework|spring-aop|2.0-rc1|NA\x04\x00\x01m\x00\x00\x00\r1318435754884\x04\x00\x01i\x00\x00\x00"jar|1150816050000|269480|1|0|0|jar\x05\x00\x011\x00\x00\x00(1bafba08618568636c1d430fe0b26aeabc2185e2\x00\x00\x00\x04\x05\x00\x01u\x00\x00\x002org.springframework|spring-aop|2.0-rc1|sources|jar\x04\x00\x01m\x00\x00\x00\r1318435754941\x04\x00\x01i\x00\x00\x00"jar|1151503212000|305924|2|2|0|jar\x05\x00\x011\x00\x00\x00(65a05b54d403c9436dc5208b29619d961d653743\x00\x00\x00\x04\x05\x00\x01u\x00\x00\x00(org.springframework|spring-aop|2.0-m5|NA\x04\x00\x01m\x00\x00\x00\r1318435755001\x04\x00\x01i\x00\x00\x00"jar|1149291355000|267027|0|0|0|jar\x05\x00\x011\x00\x00\x00(adb03d0ddc9c6a5cb7393a86e848dd4468e24576\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x00(org.springframework|spring-aop|2.0-m4|NA\x04\x00\x01m\x00\x00\x00\r1318435755074\x04\x00\x01i\x00\x00\x00"jar|1146083472000|281221|1|0|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(c4a35c0705c7cc15c83ec37ae92c6b6be6088583\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x001org.springframework|spring-aop|2.0-m4|sources|jar\x04\x00\x01m\x00\x00\x00\r1318435755257\x04\x00\x01i\x00\x00\x00"jar|1151503212000|311319|2|2|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(2086d17c3e0985fe623c8d49a68e1158a292b22a\x00\x00\x00\x04\x05\x00\x01u\x00\x00\x00(org.springframework|spring-aop|2.0-m3|NA\x04\x00\x01m\x00\x00\x00\r1318435755317\x04\x00\x01i\x00\x00\x00"jar|1141973063000|274967|0|0|0|jar\x05\x00\x011\x00\x00\x00(d2163e8056bd3028795e51468e014cb6a37a8238\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x00(org.springframework|spring-aop|2.0-m2|NA\x04\x00\x01m\x00\x00\x00\r1318435755625\x04\x00\x01i\x00\x00\x00"jar|1138919279000|260848|0|0|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(c27c328604cb1c61e8f783d6f256f1a9ad16a113\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x00(org.springframework|spring-aop|2.0-m1|NA\x04\x00\x01m\x00\x00\x00\r1318435756213\x04\x00\x01i\x00\x00\x00"jar|1135355840000|229696|0|0|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(71518108fa1e84e59c5db931d5c7c6cdccba28a9\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00%org.springframework|spring-aop|2.0|NA\x04\x00\x01m\x00\x00\x00\r1318435756656\x04\x00\x01i\x00\x00\x00"jar|1159955357000|285237|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(99b955369d1f91ea95a6c8a8466ee464c24e2867\x00\x00\x00\x06\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|1.2.9|NA\x04\x00\x01m\x00\x00\x00\r1318435756951\x04\x00\x01i\x00\x00\x00"jar|1173407743000|161270|0|0|0|jar\x07\x00\x01n\x00\x00\x00\x15Spring Framework: AOP\x07\x00\x01d\x00\x00\x00\x15Spring Framework: AOP\x05\x00\x011\x00\x00\x00(930be353c33759b9787d976f7d03c7e8a415cf39\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|1.2.8|NA\x04\x00\x01m\x00\x00\x00\r1318435757287\x04\x00\x01i\x00\x00\x00"jar|1159955357000|158963|0|0|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(0c09f5302760693c6888134c545d15c4e07dd9b9\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|1.2.7|NA\x04\x00\x01m\x00\x00\x00\r1318435757690\x04\x00\x01i\x00\x00\x00"jar|1141972107000|158628|1|0|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(d22b338f177103c3ef7e468579ec770f741e11ea\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x000org.springframework|spring-aop|1.2.7|sources|jar\x04\x00\x01m\x00\x00\x00\r1318435757902\x04\x00\x01i\x00\x00\x00"jar|1151503211000|184003|2|2|0|jar\x07\x00\x01n\x00\x00\x00\n'
+b'Spring AOP\x05\x00\x011\x00\x00\x00(38b8201c5b5ea1560a580de90447d4050eb138a5\x00\x00\x00\x05\x05\x00\x01u\x00\x00\x00\'org.springframework|spring-aop|1.2.6|NA\x04\x00\x01m\x00\x00\x00\r1318435757976\x04\x00\x01i\x00\x00\x00"jar|1135355840000|157014|1|0|0|jar\x07\x00\x01n\x00\x00\x00\n'
+'''
+    artifact = re.findall('[a-z]{1,}\.[a-z\.]{1,}[a-z\.]{1,}',str)
+    artifact = set(artifact)
+    [print(a) for a in artifact]

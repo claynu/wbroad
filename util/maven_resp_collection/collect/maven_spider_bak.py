@@ -37,13 +37,15 @@ def update_mysql(vul_list):
 def query():
     url = "https://mvnrepository.com/artifact/com.alibaba/fastjson"
     scraper = cloudscraper.create_scraper()
-    scraper.headers =  headers_format.format()
+    scraper.headers = headers_format.format()
     text = scraper.get(url=url, ).text
     vuln_html = parse_html.parse_vul_html(text)
     print(vuln_html)
     if vuln_html is None:
         return
     update_mysql(vuln_html)
+
+
 
 
 if __name__ == '__main__':

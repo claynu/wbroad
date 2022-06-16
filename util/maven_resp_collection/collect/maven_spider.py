@@ -1,5 +1,9 @@
+import re
+
 import requests
 import cloudscraper
+from pymysql import IntegrityError
+
 from collect import parse_html, headers_format
 import pymysql
 
@@ -13,12 +17,14 @@ def connect_mysql():
 # list 格式 data
 def execmany_sql(sql,data):
     try:
+        data = set(data)
         con = connect_mysql()
         cursor = con.cursor()
         cursor.executemany(sql, tuple(data))
         con.commit()
         con.close()
-    except Exception as e:
+    except IntegrityError as e:
+
         print(e.args)
 
 def update_mysql(vul_list):
@@ -35,7 +41,7 @@ def update_mysql(vul_list):
     try:
         con = connect_mysql()
         cursor = con.cursor()
-        sql = "insert into vul_information(groupId, artifactId, version, vuln_info) value(%s,%s,%s,%s)"
+        sql = "insert ignore  into vul_information(groupId, artifactId, version, vuln_info) value(%s,%s,%s,%s)"
         cursor.executemany(sql, datas)
         con.commit()
         con.close()
@@ -44,17 +50,8 @@ def update_mysql(vul_list):
 
 
 def insert_art_url(urls):
-    sql = "insert into artifact(url) value(%s)"
+    sql = "insert ignore into artifact(url) value(%s)"
     execmany_sql(sql, urls)
-    # try:
-    #     con = connect_mysql()
-    #     cursor = con.cursor()
-    #     sql = "insert into artifact(url) value(%s)"
-    #     cursor.executemany(sql, tuple(urls))
-    #     con.commit()
-    #     con.close()
-    # except Exception as e:
-    #     print(e.args)
 
 
 def query():
@@ -70,14 +67,15 @@ def query():
 
 
 def collect_categories():
-    for page in range(1, 10):
+    for page in range(1, 20):
         url = f"https://mvnrepository.com/open-source?p={page}"
         scraper = cloudscraper.create_scraper()
         scraper.headers = headers_format.format()
         text = scraper.get(url=url).text
         sources = parse_html.parse_open_source_html(text)
-        for i in sources:
-            print(i)
+        if sources:
+            sql = "insert ignore  into categories(url) value(%s)"
+            execmany_sql(sql,sources)
 
 
 def collect_url():
@@ -96,8 +94,17 @@ def collect_url():
         print(f"{source} is done")
 
 
+def get_vul_info(groupId,artifactId,version):
+    url = f"https://mvnrepository.com/artifact/{groupId}/{artifactId}/{version}"
+
 
 if __name__ == '__main__':
-    collect_url()
+    # collect_url()
     # query()
     # collect_categories()
+    f = open(r"../lib/nexus-maven-repository-index","rb")
+    for i in f.readlines():
+        artifacts = re.findall('[a-z]{1,}\.[a-z0-9\.]{1,}[a-z0-9\.]{1,}', str(i))
+        sql = "artifactId"
+        sql = "insert ignore  into artifact(artifactId) value(%s)"
+        execmany_sql(sql, artifacts)
