@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{commons/commons::head}"></div>
+
+<body>
+<!-- 顶部导航栏 -->
+<div th:replace="~{commons/commons::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- 侧边栏 -->
+        <div th:replace="~{commons/commons::siderbar(active='traversal.html')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="vul_header">
+                <span>文件操作 - 路径穿越</span>
+                <a class="btn btn-sm btn-primary" target="_blank" href="">漏洞案例</a>
+            </div>
+            <hr>
+
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#aa"><span class="lnr lnr-bug"></span> 漏洞描述</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#bb"><span class="lnr lnr-bullhorn"></span> 安全编码</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane dec shadow-sm p-3 mb-4 rounded active" id="aa">
+                    目录遍历,
+                    应用系统在处理下载文件时未对文件进行过滤，系统后台程序程序中如果不能正确地过滤客户端提交的../和./之类的目录跳转符，攻击者可以通过输入../进行目录跳转，从而下载、删除任意文件。
+                </div>
+                <div class="tab-pane fade" id="bb">
+                    <textarea disabled="disabled" class="form-control shadow-sm p-3 mb-5 rounded" id="coder" style="height: 160px;">
+【必须】避免路径拼接
+ 1. 文件目录避免外部参数拼接。
+ 2. 保存文件目录建议后台写死并对文件名进行校验（字符类型、长度）。
+ 3. 建议文件保存时，将文件名替换为随机字符串。
+ 如因业务需要不能满足1.2.3的要求，需判断请求文件名和文件路径参数中是否存在../或..\(windows)， 如存在应判定路径非法并拒绝请求。
+                    </textarea>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="box-float">
+                <div class="float1">
+
+                    <a style="float:right" class="btn btn-sm btn-danger"
+                       th:href="@{/Traversal/download?filename=../../../../../../../etc/passwd}">运行</a>
+                    <h5><span class="lnr lnr-bug"> 漏洞代码</span></h5>
+                    <textarea class="form-control" id="code1">
+// 文件路径没做限制，通过../递归下载任意文件
+// PoC：/Traversal/download?filename=../../../../../../../etc/passwd
+
+@GetMapping("/download")
+public String download(String filename, HttpServletRequest request, HttpServletResponse response) {
+    String filePath = System.getProperty("user.dir") + "/logs/" + filename;
+    try {
+        File file = new File(filePath);
+        InputStream is = new BufferedInputStream(new FileInputStream(file));
+        byte[] buffer = new byte[is.available()];
+        fis.read(buffer);
+        fis.close();
+        response.reset();
+        response.addHeader("Content-Disposition", "attachment;filename=" + filename);
+        response.addHeader("Content-Length", "" + file.length());
+        OutputStream toClient = new BufferedOutputStream(response.getOutputStream());
+        response.setContentType("application/octet-stream");
+        toClient.write(buffer);
+        toClient.flush();
+        toClient.close();
+        return "下载文件成功：" + filePath;
+                    </textarea>
+                </div>
+
+                <div class="float2">
+                    <a style="float:right" class="btn btn-sm btn-success"
+                       th:href="@{/Traversal/download/safe?filename=../}">运行</a>
+                    <h5><span class="lnr lnr-smile"> 安全代码 - 过滤</span></h5>
+                    <textarea class="form-control" id="code2">
+// 过滤..和/
+
+public static boolean check_traversal(String content) {
+    return content.contains("..") || content.contains("/");
+}
+                    </textarea><br>
+
+                    <a style="float:right"
+                       href="#"></a>
+                    <h5><span class="lnr lnr-smile"> 安全代码 - id参数化</span></h5>
+                    <textarea class="form-control" id="code3">
+// 对文件名做映射生成id值，通过参数化下载文件可以有效防止遍历问题
+// 需要注意：控制用户权限，避免通过遍历下载文件（越权）
+                    </textarea>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+
+<!-- 引入script -->
+<div th:replace="~{commons/commons::script}"></div>
+
+
+</body>
+
+</html>

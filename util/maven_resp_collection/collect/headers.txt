@@ -1,0 +1,19 @@
+Host: mvnrepository.com
+Connection: close
+Pragma: no-cache
+Cache-Control: no-cache
+sec-ch-ua: " Not A;Brand";v="99", "Chromium";v="102", "Google Chrome";v="102"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: same-origin
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Referer: https://mvnrepository.com/artifact/com.alibaba/fastjson/2.0.7
+Accept-Encoding: gzip, deflate
+Accept-Language: zh,zh-CN;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: _ga=GA1.2.452677809.1655364919; _gid=GA1.2.558240806.1655364919; cf_clearance=7oh4XouAt6eLweCD8o..azPlaofOeP3_Ql.EXiWtZGo-1655369867-0-150; _gat=1; cf_chl_rc_m=1; cf_chl_2=1bab3d1b96ff257; cf_chl_prog=b; MVN_SESSION=eyJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7InVpZCI6IjAzYzU3ZjkxLWFmYWQtMTFlYi1hMDcyLTE3YWM1ODE0ZGFmZSJ9LCJleHAiOjE2ODY5MDU5MDksIm5iZiI6MTY1NTM2OTkwOSwiaWF0IjoxNjU1MzY5OTA5fQ.m-hszKlqr4QopwndeaUhwAnay-vXOVwciczl6Gs5lzQ; _dd_s=logs=1&id=d5079058-a43e-42fe-9c82-74893176f9e0&created=1655368040189&expire=1655370812450; __cf_bm=LPqoXWvfEVI9RChg2v97.77vi70shH3RSCwOhKaUMsI-1655369913-0-Aaducdu69ui4MdA3jCYiKjJMvrmAWonci2Vg2OySYWMj6+b3BW1kLffc7q+aWYGQ+sgx27tGFk8OnmuC3YvzNHYHEucVHk+QnDE/iVLcIkiFG/XflVLyEGGoAvQ9lg0eCQ==
+

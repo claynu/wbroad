@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="~{commons/commons::head}"></div>
+
+<body>
+<!-- 顶部导航栏 -->
+<div th:replace="~{commons/commons::topbar}"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- 侧边栏 -->
+        <div th:replace="~{commons/commons::siderbar(active='ssti.html')}"></div>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="vul_header">
+                <span>SSTI</span>
+                <a class="btn btn-sm btn-primary" target="_blank" href="">漏洞案例</a>
+            </div>
+            <hr>
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#aa"><span class="lnr lnr-bug"></span> 漏洞描述</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#bb"><span class="lnr lnr-bullhorn"></span> 安全编码</a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane dec shadow-sm p-3 mb-4 rounded active" id="aa">
+                    SSTI(Server Side Template Injection) 服务器模板注入, 服务端接收了用户的输入，将其作为 Web
+                    应用模板内容的一部分，在进行目标编译渲染的过程中，执行了用户插入的恶意内容。
+                </div>
+                <div class="tab-pane fade" id="bb">
+                    <textarea disabled="disabled" class="form-control shadow-sm p-3 mb-5 rounded" id="coder" style="height: 100px;">
+null
+                    </textarea>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="box-float">
+                <div class="float1">
+
+                    <a style="float:right" class="btn btn-sm btn-danger" href="/SSTI/doc/__${T(java.lang.Runtime).getRuntime().exec('open -a Calculator')}__::.x">运行</a>
+                    <h5><span class="lnr lnr-bug"> 漏洞代码</span></h5>
+                    <textarea class="form-control" name="code" id="code1">
+ /**
+   * 将请求的url作为视图名称，调用模板引擎去解析
+   * 在这种情况下，我们只要可以控制请求的controller的参数，一样可以造成RCE漏洞
+   * payload: __${T(java.lang.Runtime).getRuntime().exec("open -a Calculator")}__::.x
+   */
+
+ @GetMapping("/doc/{document}")
+ public void getDocument(@PathVariable String document) {
+     System.out.println(document);
+ }
+                    </textarea>
+
+                </div>
+
+                <div class="float2">
+                    <a style="float:right" class="btn btn-sm btn-success" href="/SSTI/doc/safe/__${T(java.lang.Runtime).getRuntime().exec('open -a Calculator')}__::.x">运行</a>
+                    <h5><span class="lnr lnr-smile"> 安全代码</span></h5>
+                    <textarea class="form-control" name="code" id="code2">
+ // 由于controller的参数被设置为HttpServletResponse，Spring认为它已经处理了HTTP Response，因此不会发生视图名称解析
+
+ @GetMapping("/doc/safe/{document}")
+ public void getDocument(@PathVariable String document, HttpServletResponse response) {
+     System.out.println("Retrieving " + document);
+ }
+                    </textarea>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
+</div>
+
+<!-- 引入script -->
+<div th:replace="~{commons/commons::script}"></div>
+
+</body>
+</html>
