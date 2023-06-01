@@ -1,0 +1,13 @@
+GET /api/v1.0/extmcht/result HTTP/1.1
+appid: 761c8eb3-498e-4151-a5e6-04792ca42853
+Content-Type: application/json
+User-Agent: PostmanRuntime/7.28.4
+Host: nmm-online-openapi.paasuat.cmbchina.cn
+Accept-Encoding: gzip, deflate
+Connection: close
+Content-Length: 77
+
+{
+    "platMchtNo": "30899917273003L",
+    "businessNo": "BYDGD034J5V6e"
+}

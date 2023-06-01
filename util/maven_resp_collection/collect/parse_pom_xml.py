@@ -1,8 +1,7 @@
 # encoding:utf-8
 import json
 from xml.dom.minidom import parse
-
-import cloudscraper
+import requests
 
 from collect import headers_format, parse_html
 
@@ -28,13 +27,10 @@ def get_vul_info(groupId, artifactId, version):
     url = ""
     res_vul_list = {}
     if version:
-        url = f"https://mvnrepository.com/artifact/{groupId}/{artifactId}/{version}"
+        url = f"http://173.82.135.41/artifact/{groupId}/{artifactId}/{version}"
     else:
-        url = f"https://mvnrepository.com/artifact/{groupId}/{artifactId}"
-    # print(url)
-    scraper = cloudscraper.create_scraper()
-    scraper.headers = headers_format.format()
-    resp = scraper.get(url=url)
+        url = f"http://173.82.135.41/artifact/{groupId}/{artifactId}"
+    resp = requests.get(url=url,headers=headers_format.format())
     text = resp.text
     if resp.text.find("Not Found:") != -1:
         print("请求地址存在异常")
