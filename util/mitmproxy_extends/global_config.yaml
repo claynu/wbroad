@@ -1,0 +1,145 @@
+version: 1.3.0                                                   # mitm 拓展 版本
+db_file: db/crm22.db                                             # 自定义 数据库文件名 每个项目单独命名 固定格式 db/xxx.db
+request_decoder: false                                           # 请求需解密/加密加签 需要完成proxy_script目录下的 decrypt_proxy.py 和 encrypt_proxy.py
+
+mitm:
+  port: 8000                                                     # 监听端口
+  host: 127.0.0.1                                                # 默认127.0.0.1   # 99.15.156.161
+  encrypt_proxy_port: 8089                                       # 加密加签代理 前置条件 request_decoder = true
+  upstream_proxy:  #http://127.0.0.1:7777                        # proxy上游代理
+  encrypt_bin:  "mitmweb " #--mode upstream:http://127.0.0.1:8991"     # 加密加签启动命令  {encrypt_bin} -s  enc_proxy.py --ssl-insecure
+
+target:
+  host: pb.*?paasst.cmbchina.cn                                  # 网站 !!域名/IP!! 不要填写协议和端口 支持单个正则匹配 或者列表(全等)
+  blacklist:                                                     # 黑名单配置
+    suffix: js,gif,jpg,png,css,svg,json,encrypt_upload,ttf,ico   # 黑名单请求后缀
+    url:                                                         # 黑名单url
+      - https://lf12-32-gateway-st.paasst.cmbchina.cn/front-rest-log/v2/encrypt_upload
+      - https://lf12-32-gateway-st.paasst.cmbchina.cn/front-rest-log/v3/trace
+  # 使用替换权限信息重放时需要
+  scan_all_params: false                                         # sqlmap 全量扫描 get带参数或者  post请求     默认为False
+  scan_url_unique: false                                         # sqlmap 扫描去重 (如果接口是工作条格式 请关闭) 默认为True
+  auth:                                                          # 认证信息  需提供一个高权限，2个低权限
+    threads: 4                                                   # 重放线程数
+    proxy:                                                       # 重放时是否使用代理
+        enable: true
+        http: http://127.0.0.1:8089
+        https: http://127.0.0.1:8089
+    position:                                                    # 认证信息位置
+      headers:                                                   # 当前只支持 headers 中的鉴权方式 有几个配置几个
+        - Cookie                                                 # 字段名 可配置多个对应的value参数名需同步
+        #- Authorization                                         # 字段名 可配置多个对应的value参数名需同步
+    value:                                                       # 对应字段的值
+      upper_permission:                                          # 高权限用户
+        Cookie: ""
+      lower_permission1:                                         # 低权限用户1
+        Cookie: "com.cmb.dw.rtl.sso.vorglvl=70; com.cmb.dw.rtl.sso.sysid=privatebanking; a=80274258;com.cmb.dw.rtl.sso.token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsSXAiOiI5OS4xNS4xNTYuMTYxIiwiYnJhbmNoSWQiOiIxMDAiLCJzeXNJZCI6bnVsbCwidXNlcl9uYW1lIjoiODAwNzQxNTQiLCJ2b3JnQ29kZSI6Ijc1NTU1MCIsInlzdElkIjoiMDc0MTU0IiwidHlwZSI6IlVTRVIiLCJhdXRob3JpdGllcyI6WyJ4eHgiLCJST0xFX1VTRVIiXSwiY2xpZW50X2lkIjoicG9ydGFsIiwidWlkIjoiODAwNzQxNTQiLCJwb3NpdGlvbklkIjoiUkIwMTAxIiwicGhvbmUiOiIxNTg1ODA3NDE1NCIsInNjb3BlIjpbImFsbCJdLCJjb21wYW55IjoicG9ydGFsIiwiZXhwIjoxNjc3ODI2NTgyLCJqdGkiOiI3NmQ4MTI1Mi1lNjA5LTQzNzYtODVjZS03ZWVjZjM4NjU3YjgiLCJzYXBJZCI6IjgwMDc0MTU0In0.VG42MGGuMroqUTrPaQVv872_8YqYy2zyqOtRTT9p9GBtsNDUlYkPBlaho178IniElgMdDbNCCUf_3jtnbu3THVmXjaulFD4XsHFsva19HrIuXfK6uEyk-S64aICusc_KAuR5zNcxhfECgRLjuW69UU9dt2_k-Nxo1uQe-JChoxMFq3E3dMQq4RPn0P7GXuhJPJnb3TOTmdQI97Xv1RDHJ2bFIqTEObz-3U-VC4aItQJyjgViW8TA0SzLP0rSV9AW4g0crfGh_bKELJ6IuGsQvGzjPwWtw6pzsZDl0Gn1ztBAQ8jZ0UsnZXZva0Kgp9ZQPKHQR19CF5kqYamNrnj-Xw;"
+      lower_permission2:                                         # 低权限用户2 权限等级 同1 80274258
+        Cookie: "com.cmb.dw.rtl.sso.vorglvl=70; com.cmb.dw.rtl.sso.sysid=privatebanking;  com.cmb.dw.rtl.sso.token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsSXAiOiI5OS4xNS4xNTYuMTYxIiwiYnJhbmNoSWQiOiI3NTUiLCJzeXNJZCI6bnVsbCwidXNlcl9uYW1lIjoiODAyNzQyNTgiLCJ2b3JnQ29kZSI6IjMwMDcwNCIsInlzdElkIjoiMjc0MjU4IiwidHlwZSI6IlVTRVIiLCJhdXRob3JpdGllcyI6WyJ4eHgiLCJST0xFX1VTRVIiXSwiY2xpZW50X2lkIjoicG9ydGFsIiwidWlkIjoiODAyNzQyNTgiLCJwb3NpdGlvbklkIjoiUEIwMTAxIiwicGhvbmUiOiIiLCJzY29wZSI6WyJhbGwiXSwiY29tcGFueSI6InBvcnRhbCIsImV4cCI6MTY3NzgyNjYwOSwianRpIjoiMjdlNWJjMWItNWU2Zi00MjI5LWE3ZWItNGY4NjUxYzRiYWU4Iiwic2FwSWQiOiI4MDI3NDI1OCJ9.D0lbwITQmoENIpk066J31e5O02_Y3gCt74iAwEWMspou4-ok6jf4j1VmsA8WUPD1EJbpss9FHXuyY_mmCpzztuAY2MBOL1uB7eg7Sy2dAy-NuvPKhqZeCuYeXAIN2sPe66ioWVZDY8E0Cb_9-idnULf3dyjrOlZVtbG3YfD4IITd58clixAFsnCRiYaFiG1Q9ltlE_8lnQnB2aq-eEJblT4xckw0RsHj1gcxtMxRl1hrmlUWknM4EuGqjiN589OuyVJdH7IaFm7w0KQ9kwMmIhVTuM2j_ku6-ltZfAV7T9r1NqZvhr9E1uuz8AEjAxHwtrPWrtGxT4sYyWbG9DxrxQ;"
+      without_permission:                                        # 默认检查未授权访问 无权限
+        Cookie: ""
+
+  schedule: # 定时重放请求
+    start_time: "2022-12-09 08:55:00"  # 固定格式
+    threads: 20
+    sql_det_status: true                                         # true 会对请求进行sql扫描
+    sql_det_methods:                                             # 扫描以下配置的http method 请求
+#      - GET
+      - POST
+    proxy:
+      http: 127.0.0.1:7777
+      https: 127.0.0.1:7777
+    auth_field: upper_permission # 高权限 对应选项为  upper_permission  lower_permission1  lower_permission2  without_permission
+
+
+plugin: # 第三方拓展
+  dirsearch: # dirsearch
+    exec_path: D:\TOOLS\dirsearch-master\dirsearch.py              # 脚本绝对路径
+#    headers:                                                      # dirsearch headers 配置
+#        token: 72A8A15EDD004436A82455D312161C29
+#        appId: 725a0750-59fe-4741-bfe9-cd5d8396ebbc
+#        systemUserId: 274X85
+#      cookie: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2Njg0MzUxODYsInVzZXJuYW1lIjoiend4In0.8JKhSLpL2Y2wvGad3z2B9-tBJ-yGa4T9_eFeecMa7cE'
+#    proxy: http://127.0.0.1:8080
+    dict:  #D:\TOOLS\dirsearch-master\db\dicc.txt                   # 字典路径 空则使用dirsearch 默认字段
+    root_url:  # 批量扫描
+         - https://pbpcui.paasst.cmbchina.cn
+         - http://ncrm.paasst.cmbchina.cn/
+         - https://pbadvancedsearchui.paasst.cmbchina.cn/
+         - http://apimarketui.paasst.cmbchina.cn
+
+
+
+  sqlmapapi: # sqlmapapi 调用
+    #url: http://55.13.157.115:6000  # 必须是  协议 + host + port
+    url: http://127.0.0.1:6000
+    user: heyu
+    project: ''                                               # 项目名称 sqlmapapi 中的分类关键词默认域名
+    proxies:                                                    # sqlmapapi 接口调用代理配置
+      http: http://127.0.0.1:8080
+      https: None
+    timeout: 5                                                  # sqlmapapi 接口调用超时时间
+    flag: --sqldet--                                            # 标识url需要扫描sqli
+    options:                                                    # sqlmapapi 提交的扫描选项，根据key value 构建json 参考 readme 中参数列表
+      level: 3
+      risk: 3
+      threads: 5
+      #delay: 3
+      #proxy: http://127.0.0.1:8089
+
+
+      
+  xray:
+    enable: false   # true 打开 false 关闭  === true 在开启本代理时 会联合xray 一起扫描 xray配置文件为当前目录config.yaml
+    exec_path: D:\TOOLS\xray\xray.ex_
+    port: 7777
+
+
+## 约定 已弃用
+# path 包含 除协议域名外的信息 ： /index.html?a=1&b=2
+# url 包含所有url信息 eg ： http[s]://host:port/path
+# 时间戳 {timestamp_10} 秒级  {timestamp_13} 毫秒
+# 获取请求头信息 headers["token"] headers["auth"] 通过.获取对应属性
+# 获取body信息  body.id,body.json()["payload"] 等 如果是整个json则 body.json()   如果是json字符串则 body.text()#
+# 如 明文格式为 b6565646465 为固定值
+# GET: url=/index.php?a=1&b=2&body=b6565646465                    template: url={path}&body=b6565646465
+# POST: url=/index.php?a=1&b=2&body="{"1":"asdasd"}"b6565646465   template: url={path}&body={body.json()}b6565646465
+
+# code基于bin/customer.py 中的三个方法进行加解密加签
+
+customer:
+  white_list_path:  # 白名单path (例： /index/test/a  不含域名和参数)
+    - /ibank-pbanking-asoc/secure/keyAgreement
+    - /ibank-pbanking-asoc/userManage/getAccountInfo
+    - /ibank-pbanking-asoc/notice/sendAppVeryCode
+  code_or_config: code  # code 基于customer.py 的代码进行加密加签   config 基于本配置   none 不加密加签
+  sign:  #请求签名  todo 项目成熟后 根据配置生成对应代码逻辑
+    flag: "" # todo 保留  0.5版本迭代 {headers.token} # 需要加签的标志 如存在某参数时才加签 ,默认全加
+    algorithm: "md5"  # 加签算法 md5 、 base64
+    key: ""  # 密钥
+    method:
+      GET: url={path}&body=j9da6fld2khgz2chd354czbfd2b2fs3ea
+      POST: url={path}&body={body.get_text}j9da6fld2khgz2chd354czbfd2b2fs3ea
+#      POST: '{body.get_text}'
+    value_pos: headers.Sign # 加密后数据的位置  支持 headers / body
+
+# TODO sm2withsm3、api市场
+  encrypt:
+    flag: "s"
+    algorithm: "aes-256-gcm"  # 加密/编码算法  sm2, base64，其他算法有需求时完善
+#    format_encrypt_text: '{"payload":"{encrypt_text}"'   # 密文格式  encrypt_text 标识加密后的密文
+    format_encrypt_text: '{"payload":"{encrypt_text}","aad":"{aad}","iv":"{iv}"}'   # 密文格式  encrypt_text 标识加密后的密文
+    method:
+      #      GET:
+      POST: "{body.get_text}"  # 加密原文格式
+    keyword:          # 加密算法的相关配置
+      sm2:
+        publick_key: "" # 公钥
+      aes-gcm:
+        key: ""  # 密钥
+        aad: "datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')" # auth tag 类似签名 aes-gcm 需要
+        iv: "os.urandom(12)"  # base64编码后的偏移量 aes 加密需要
+      base64: '' # 保持未空即可
+      rsa:
+        key: ''  # rsa 公钥
+

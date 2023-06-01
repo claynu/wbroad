@@ -8,8 +8,8 @@ import mitmproxy.http
 import yaml
 from colorama import init
 
-import decrypt_proxy as decrypt
-from bin import sqli_api as api
+import proxy_script.decrypt_proxy as decrypt
+import proxy_script.bin.sqli_api as api
 import re
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
@@ -187,3 +187,5 @@ else:
 obs.schedule(event,os.path.abspath('.'),recursive=True)
 obs.start()
 
+if __name__ == '__main__':
+    printf(1)

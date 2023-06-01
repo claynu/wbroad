@@ -8,7 +8,7 @@
 import mitmproxy.http
 from colorama import init
 
-from bin import util
+from proxy_script.bin import util
 
 init(autoreset=False)
 
